@@ -1,7 +1,7 @@
 /*
 Code by Govinda Rohith Y
 CS21BTECH11062
-for NCERT class 12 Exercise 13.1 prob 1
+for NCERT class 12 Exercise 13.2 prob 1
 */
 #include<stdio.h>
 int main()
