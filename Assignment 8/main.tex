@@ -267,11 +267,8 @@ Denote the random variables $X,Y\in \cbrak{0,1}$. Events for each random variabl
     \end{table}
     
     From Total probability theorem
-    \begin{multline}
-    \pr{Y=1}=\pr{X=1}\times\pr{Y=1|X=1}\\+\pr{X=0}\times\pr{Y=1|X=0}\\
-\end{multline}
-\begin{align}
+    \begin{align}
+    \pr{Y=1}=\sum_{j=0}^1 \pr{X=j}\times\pr{Y=1|X=j} \\
     \implies\boxed{\pr{Y=1}=0.488}
 \end{align}
-    
 \end{document}
