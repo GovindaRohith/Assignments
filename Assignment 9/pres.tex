@@ -1,0 +1,156 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+%packages:
+% \usepackage{tfrupee}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{gensymb}
+% \usepackage{txfonts}
+
+% \def\inputGnumericTable{}
+
+% \usepackage[latin1]{inputenc}                                 
+% \usepackage{color}                                            
+% \usepackage{array}                                            
+% \usepackage{longtable}                                        
+% \usepackage{calc}                                             
+% \usepackage{multirow}                                         
+% \usepackage{hhline}                                           
+% \usepackage{ifthen}
+% \usepackage{caption} 
+% \captionsetup[table]{skip=3pt}  
+% \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+% \providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+% %\renewcommand{\thefigure}{\arabic{table}}
+% \renewcommand{\thetable}{\arabic{table}}      
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}   
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Assignment 9} 
+\author{Govinda Rohith Y}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+% Lists frame
+\section{Question}
+\begin{frame}{Question}
+
+\begin{block}{\textbf{2-24(Papoullis):}}
+        Box 1 contains 1000 bulbs of which $10\%$ are defective. Box 2 contains 2000 bulbs which $5\%$ are defective. Two bulbs are picked from a randomly selected box.
+\begin{enumerate}[label=(\alph*)]
+    \item Find the probability that both bulbs are defective.
+    \item Assuming that both are defective, find the probability that they came from box 1.
+\end{enumerate}
+    \end{block}
+
+\end{frame}
+
+
+% Blocks frame
+\section{Denote Random Variables}
+\begin{frame}{Denote Random Variables}
+    \begin{block}{Assign events to random variables}
+   Denote the random variable $X \in \cbrak{0,1,2}$. Events are described in Table \ref{table:table1}:
+    \end{block}
+    \begin{table}[h!]
+	\input{tables/table1}
+	\caption{}
+    \label{table:table1}
+    \end{table}
+     
+     \end{frame} 
+     \section{Given data}
+     \begin{frame}{Given data}
+\begin{block}{Represent the given data}
+
+\end{block}
+\begin{table}[h!]
+	\input{tables/table2}
+	\caption{}
+    \label{table:table2}
+    \end{table}
+\end{frame} 
+
+\section{Solution(a)}
+     \begin{frame}{Solution(a)}
+     \begin{block}{Solution}
+     $\pr{X=2}$ denotes the probability that both bulbs are defective.\\
+     \end{block}
+      From Total probability theorem
+        \begin{align}
+            \pr{X=2}=\sum_{j=0}^1\pr{X=j}\pr{X=2|X=j}\\
+            \implies \boxed{\pr{X=2}\approx 0.006193}
+        \end{align}
+     \end{frame}
+     
+     
+     \section{Solution(b)}
+     \begin{frame}{Solution(b)}
+     \begin{block}{Solution}
+     $\pr{X=0|X=2}$ denotes two bulbs are picked from box 1 assuming both are defective.
+     \end{block}
+     From Bayes theorem
+        \begin{align}
+            \pr{X=0|X=2}=\frac{\pr{X=0}\pr{X=2|X=0}}{\pr{X=2}}\\
+            \implies \boxed{\pr{X=0|X=2}\approx0.8}
+        \end{align}
+     \end{frame}
+\end{document}
