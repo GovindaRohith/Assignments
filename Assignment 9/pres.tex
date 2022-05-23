@@ -108,7 +108,7 @@
 \section{Denote Random Variables}
 \begin{frame}{Denote Random Variables}
     \begin{block}{Assign events to random variables}
-   Denote the random variables $X\in \cbrak{0,1}$ and $Y\in \cbrak{0}$. Events are described in Table \ref{table:table1}:
+   Denote the random variables $X_1,X_2,X_3\in \cbrak{0,1}$. Events are described in Table \ref{table:table1}:
     \end{block}
     \begin{table}[h!]
 	\input{tables/table1}
@@ -132,12 +132,12 @@
 \section{Solution(a)}
      \begin{frame}{Solution(a)}
      \begin{block}{Solution}
-     $\pr{Y=0}$ denotes the probability that both bulbs are defective.\\
+     $\pr{Y=X_1+X_2}$ denotes the probability that both bulbs are defective.\\
      \end{block}
       From Total probability theorem
         \begin{align}
-            \pr{Y=0}=\sum_{j=0}^1\pr{X=j}\pr{Y=0|X=j}\\
-            \implies \boxed{\pr{Y=0}\approx 0.006193}
+        \pr{Y}=\sum_{i=0}^1 \pr{X_3=i}\pr{X_{i+1}=0}\\
+            \implies \boxed{\pr{Y}\approx 0.006193}
         \end{align}
      \end{frame}
      
@@ -145,12 +145,12 @@
      \section{Solution(b)}
      \begin{frame}{Solution(b)}
      \begin{block}{Solution}
-     $\pr{X=0|Y=0}$ denotes two bulbs are picked from box 1 assuming both are defective.
+     $\pr{X_1=0|Y=X_1+X_2}$ denotes two bulbs are picked from box 1 assuming both are defective.
      \end{block}
      From Bayes theorem
         \begin{align}
-            \pr{X=0|Y=0}=\frac{\pr{X=0}\pr{Y=0|X=0}}{\pr{Y=0}}\\
-            \implies \boxed{\pr{X=0|Y=0}\approx0.8}
+            \pr{X_1=0|Y}=\frac{\pr{X_3=0}\pr{Y|X_3=0}}{\pr{Y}}\\
+            \implies \boxed{\pr{X_1=0|Y}\approx0.8}
         \end{align}
      \end{frame}
 \end{document}
