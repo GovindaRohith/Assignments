@@ -1,0 +1,147 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+%packages:
+% \usepackage{tfrupee}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{gensymb}
+% \usepackage{txfonts}
+
+% \def\inputGnumericTable{}
+
+% \usepackage[latin1]{inputenc}                                 
+% \usepackage{color}                                            
+% \usepackage{array}                                            
+% \usepackage{longtable}                                        
+% \usepackage{calc}                                             
+% \usepackage{multirow}                                         
+% \usepackage{hhline}                                           
+% \usepackage{ifthen}
+% \usepackage{caption} 
+% \captionsetup[table]{skip=3pt}  
+% \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+% \providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+% %\renewcommand{\thefigure}{\arabic{table}}
+% \renewcommand{\thetable}{\arabic{table}}      
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}   
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Assignment 11} 
+\author{Govinda Rohith Y\\CS21BTECH11062}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+% Lists frame
+\section{Question}
+\begin{frame}{Question}
+
+\begin{block}{\textbf{6-55(Papoullis):}}
+         Let $X$ represent the number of successes and $Y$ the number of failures of n independent
+Bernoulli trials with p representing the probability of success in anyone trial. Find the distribution of $Z =X -Y$. Show that $E\cbrak{z} = n(2p - 1), Var\cbrak{Z} = 4np(1 - p). $
+    \end{block}
+
+\end{frame}
+\section{Solution(a)}
+\begin{frame}{Solution(a)}
+    \begin{block}{Solution(a)}
+    Let 
+    \begin{align}
+        X=k\\
+        \implies Y=n-k\\
+        Z=X-Y\\
+        \implies \boxed{Z=2X-n}
+    \end{align}
+    So the Z can take values $\cbrak{-n,-(n-2),\cdots,n}$\\
+    $\implies Z$ is Binomial distribution.
+    \end{block}
+\end{frame}
+\begin{frame}{Solution (a)}
+    \begin{block}{Contd.}
+    \begin{align}
+        \pr{\{ Z=z \}}=\pr{\{2X-n=z\}}\pr{\{X=\frac{n+z}{2}\}}\\
+        \pr{\{Z=z\}}=\myvec{n\\n+z/2}p^{{(n+z)}/2} q^{{(n-z)}/2}
+    \end{align}
+    \end{block}
+\end{frame}
+\section{Section(b)}
+\begin{frame}{Solution (b)}
+    \begin{block}{Solution(b)}
+    \begin{align}
+        E(Z)=E(2X-n)\\
+        E(Z)=2np-n\\
+        \implies\boxed{E(Z)=n(2p-1)}
+    \end{align}
+    \end{block}
+\end{frame}
+\section{Solution(c)}
+\begin{frame}{Solution(c)}
+    \begin{block}{Solution(c)}
+    \begin{align}
+        Var(Z)=E((Z-\mu_Z^2)^2)\\
+        Var(Z)=4E((X-np)^2)\\
+        Var(Z)=4Var(x)\\
+        \implies\boxed{Var(Z)=4npq}
+    \end{align}
+    
+    \end{block}
+\end{frame}
+\end{document}
