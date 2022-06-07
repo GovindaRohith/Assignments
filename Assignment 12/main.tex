@@ -58,6 +58,7 @@
 \captionsetup[table]{skip=3pt}  
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
 \providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \renewcommand{\thefigure}{\arabic{table}}
 \renewcommand{\thetable}{\arabic{table}}   
@@ -67,7 +68,7 @@
 \usetheme{CambridgeUS}
 
 % Title page details: 
-\title{Assignment 11} 
+\title{Assignment 12} 
 \author{Govinda Rohith Y\\CS21BTECH11062}
 \date{\today}
 \logo{\large \LaTeX{}}
@@ -94,54 +95,42 @@
 \section{Question}
 \begin{frame}{Question}
 
-\begin{block}{\textbf{6-55(Papoullis):}}
-         Let $X$ represent the number of successes and $Y$ the number of failures of n independent
-Bernoulli trials with p representing the probability of success in anyone trial. Find the distribution of $Z =X -Y$. Show that $E\cbrak{z} = n(2p - 1), Var\cbrak{Z} = 4np(1 - p). $
+\begin{block}{\textbf{7-32(Papoullis):}}
+         The random variables $X$ and $Y$ are uncorrelated with zero mean and $\sigma_x=\sigma_y=\sigma$. Show that
+if$z=x+iy$ then
+$$f_z(Z)=f(x,y)=\frac{1}{2\pi\sigma^2}e^{-(x^2+y^2)/2\sigma^2}=\frac{1}{\pi\sigma_Z^2}e^{-\abs{Z^2}/\sigma_z^2}$$
+$$\Phi_Z{(\Omega)}=\exp{\left\{-\frac{1}{2}(\sigma^2u^2+\sigma^2v^2_Z)\right\}}=\exp{\left\{-\frac{1}{4}\sigma_Z^2\abs{\Omega}^2\right\}}$$
     \end{block}
-
-\end{frame}
 \section{Solution(a)}
+\end{frame}
 \begin{frame}{Solution(a)}
-    \begin{block}{Solution(a)}
-    Let 
+    Since $X$ and $Y$ are independent
     \begin{align}
-        X=k\\
-        \implies Y=n-k\\
-        Z=X-Y\\
-        \implies \boxed{Z=2X-n}
+        \sigma_Z^2&=E(\abs{Z^2})=E(X^2+Y^2)\\
+      \sigma_Z^2&=\sigma_X^2+\sigma_Y^2=2\sigma^2\\
+      M_Z(t)=E(e^{tZ})&=E(e^{t(x+iY)})\\
+      E(e^{tZ})&=E(e^{tX})E(e^{tiY})\\
+      \text{But,}M_X(t)=E(e^{tX})&=\int _{-\infty}^\infty e^{tx}f_X(X)dx
     \end{align}
-    So the Z can take values $\cbrak{-n,-(n-2),\cdots,n}$\\
-    $\implies Z$ is Binomial distribution.
-    \end{block}
 \end{frame}
-\begin{frame}{Solution (a)}
-    \begin{block}{Contd.}
+\section{Solution(a) contd}
+\begin{frame}{Contd.}
     \begin{align}
-        \pr{\{ Z=z \}}=\pr{\{2X-n=z\}}\pr{\{X=\frac{n+z}{2}\}}\\
-        \pr{\{Z=z\}}=\myvec{n\\n+z/2}p^{{(n+z)}/2} q^{{(n-z)}/2}
+        \int_{-\infty}^{\infty}e^{tZ}f_Z(Z)dZ&=\int_{-\infty}^{\infty}e^{tX}f_X(X)dX\times\int_{-\infty}^{\infty}e^{tY}f_Y(Y)dY\\
+        \int_{-\infty}^{\infty}e^{tZ}f_Z(Z)dZ&=\left(\int_{-\infty}^{\infty}e^{tX}\frac{1}{\sqrt{2\pi \sigma ^2}}e^{\frac{-X^2}{2\sigma^2}}dx\right)^2\\
+      f_Z(Z)&=\frac{1}{2\pi\sigma^2}e^{-(x^2+y^2)/2\sigma^2}=\frac{1}{\pi\sigma_Z^2}e^{-\abs{Z}^2/2\sigma^2}
     \end{align}
-    \end{block}
 \end{frame}
-\section{Section(b)}
-\begin{frame}{Solution (b)}
+\section{Solution(b)}
+\begin{frame}{Solution(b)}
     \begin{block}{Solution(b)}
     \begin{align}
-        E(Z)=E(2X-n)\\
-        E(Z)=2np-n\\
-        \implies\boxed{E(Z)=n(2p-1)}
+        \Phi_Z(\Omega) =\Phi_X(u)\Phi_Y(v)\\
+        \Phi_Z(\Omega)=e^{-\frac{1}{2}\sigma^2(u^2+v^2)}\\
+        \Phi_Z(\Omega)=e^{-\frac{1}{2}\sigma^2\abs{\Omega^2}}\\
+        \implies\boxed{\Phi_Z(\Omega)=e^{-\frac{1}{4}\sigma_Z^2\abs{\Omega^2}}}
     \end{align}
-    \end{block}
-\end{frame}
-\section{Solution(c)}
-\begin{frame}{Solution(c)}
-    \begin{block}{Solution(c)}
-    \begin{align}
-        Var(Z)=E((Z-\mu_Z^2)^2)\\
-        Var(Z)=4E((X-np)^2)\\
-        Var(Z)=4Var(x)\\
-        \implies\boxed{Var(Z)=4npq}
-    \end{align}
-    
+            
     \end{block}
 \end{frame}
 \end{document}
