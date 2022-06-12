@@ -1,5 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% Welcome %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % Welcome to Overleaf --- just edit your LaTeX on the left,
 % and we'll compile it for you on the right. If you open the
 % 'Share' menu, you can invite other users to edit at the same
@@ -106,20 +108,24 @@ $$\Phi_Z{(\Omega)}=\exp{\left\{-\frac{1}{2}(\sigma^2u^2+\sigma^2v^2_Z)\right\}}=
 \begin{frame}{Solution(a)}
     Since $X$ and $Y$ are independent
     \begin{align}
-        \sigma_Z^2&=E(\abs{Z^2})=E(X^2+Y^2)\\
-      \sigma_Z^2&=\sigma_X^2+\sigma_Y^2=2\sigma^2\\
-      M_Z(t)=E(e^{tZ})&=E(e^{t(x+iY)})\\
-      E(e^{tZ})&=E(e^{tX})E(e^{tiY})\\
-      \text{But,}M_X(t)=E(e^{tX})&=\int _{-\infty}^\infty e^{tx}f_X(X)dx
+        \text{Variance of } Z&=X+iY\\
+        Var(Z)&=E(\abs{Z-E(Z)^2})=E(\abs{Z}^2)-E(\abs{Z})^2\\
+      M_Z(s)=E(e^{-sZ})&=E(e^{-s(x+iY)})\\
+      E(e^{-sZ})&=E(e^{-sX})E(e^{-siY})\\
+      \implies E(\abs{Z})&=E(X)+iE(Y)=0
     \end{align}
 \end{frame}
 \section{Solution(a) contd}
 \begin{frame}{Contd.}
     \begin{align}
-        \int_{-\infty}^{\infty}e^{tZ}f_Z(Z)dZ&=\int_{-\infty}^{\infty}e^{tX}f_X(X)dX\times\int_{-\infty}^{\infty}e^{tY}f_Y(Y)dY\\
-        \int_{-\infty}^{\infty}e^{tZ}f_Z(Z)dZ&=\left(\int_{-\infty}^{\infty}e^{tX}\frac{1}{\sqrt{2\pi \sigma ^2}}e^{\frac{-X^2}{2\sigma^2}}dx\right)^2\\
-      f_Z(Z)&=\frac{1}{2\pi\sigma^2}e^{-(x^2+y^2)/2\sigma^2}=\frac{1}{\pi\sigma_Z^2}e^{-\abs{Z}^2/2\sigma^2}
+        M_{\abs{Z}^2}(s)&=E(e^{-s\abs{Z}^2})=E(e^{-sX^2})E(e^{-sY^2})\\
+        E(e^{-s\abs{Z}^2})&=\left(1+sE(X^2)+\frac{s^2E(X^4)}{2!}+\ldots\right)\left(1+sE(Y^2)+\frac{s^2E(Y^4)}{2!}+\ldots\right)\\
+         E(\abs{Z}^2)&=E(X^2)+E(Y^2)
     \end{align}
+    Substitute Equations (8,5) in Equation(2)
+ \begin{align}
+     f_Z(Z)=\frac{1}{2\pi\sigma^2}e^{-(x^2+y^2)/2\sigma^2}=\frac{1}{\pi\sigma_Z^2}e^{-\abs{Z^2}/\sigma_z^2}
+ \end{align}
 \end{frame}
 \section{Solution(b)}
 \begin{frame}{Solution(b)}
@@ -133,4 +139,4 @@ $$\Phi_Z{(\Omega)}=\exp{\left\{-\frac{1}{2}(\sigma^2u^2+\sigma^2v^2_Z)\right\}}=
             
     \end{block}
 \end{frame}
-\end{document}
+\end{document}}
