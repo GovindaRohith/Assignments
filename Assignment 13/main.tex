@@ -1,0 +1,139 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+%packages:
+% \usepackage{tfrupee}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{gensymb}
+% \usepackage{txfonts}
+
+% \def\inputGnumericTable{}
+
+% \usepackage[latin1]{inputenc}                                 
+% \usepackage{color}                                            
+% \usepackage{array}                                            
+% \usepackage{longtable}                                        
+% \usepackage{calc}                                             
+% \usepackage{multirow}                                         
+% \usepackage{hhline}                                           
+% \usepackage{ifthen}
+% \usepackage{caption} 
+% \captionsetup[table]{skip=3pt}  
+% \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+% \providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+% %\renewcommand{\thefigure}{\arabic{table}}
+% \renewcommand{\thetable}{\arabic{table}}      
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}   
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Assignment 12} 
+\author{Govinda Rohith Y\\CS21BTECH11062}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+% Lists frame
+\section{Question}
+\begin{frame}{Question}
+
+\begin{block}{\textbf{9-31(Papoullis):}}
+        Show that if
+        $$S=\int_0^{10}x(t)dt \text{ then } E(S^2)=\int_{-10}^{10}(10-\abs{\tau})R_X{(\tau})d\tau$$
+        Find the mean and variance of $S$ if $E(x(t))=8$,$R_X{(\tau})=64+10^{-2\abs{\tau}}$
+    \end{block}
+    \end{frame}
+    \section{Solution (a)}
+    \begin{frame}{Solution (a)}
+        \begin{block}{Solution (a)}
+        The moment of $S$ is equal to moments of (Since x(t) is WSS)
+        \begin{align}
+            Z&=\int_{-5}^{5}x(t)dt\\
+            \implies E(S^2)&=\int_{-5}^{5}\int_{-5}^{5}R_X(t_1-t_2)dt_1dt_2\\
+            \implies\boxed{E(S^2)=\int_{-10}^{10}(10-\abs{\tau})R_X{(\tau})d\tau}
+        \end{align}
+        \end{block}
+    \end{frame}
+    
+    \section{Solution (b)}
+    \begin{frame}{Solution (b}
+        \begin{block}{Solution (b)}
+        \begin{align}
+        s&=\int_0^{10}x(t)dt\\
+        \implies E(s)&=\int_0^{10}E(x(t))dt\\
+        \text{Given }E(x(t))&=8\\
+        \implies \boxed{E(s)=80}
+        \end{align}
+        \end{block}
+    \end{frame}
+    \section{Solution(b)..}
+    \begin{frame}{Contd$\ldots$}
+        \begin{block}{Contd}
+    \begin{align}
+        Var(s)&=E(S-E(S)^2)=E(S^2)-E(S)^2\\
+        \sigma^2&=2\int_0^{10}(10-\tau)(64+10e^{-2\tau})d\tau-80^2\\
+        \implies \boxed{\sigma^2\approx9.5}
+    \end{align}
+        \end{block}
+    \end{frame}
+    \end{document}
