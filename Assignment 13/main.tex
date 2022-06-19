@@ -108,15 +108,38 @@
         \begin{block}{Solution (a)}
         The moment of $S$ is equal to moments of (Since x(t) is WSS)
         \begin{align}
-            Z&=\int_{-5}^{5}x(t)dt\\
-            \implies E(S^2)&=\int_{-5}^{5}\int_{-5}^{5}R_X(t_1-t_2)dt_1dt_2\\
-            \implies\boxed{E(S^2)=\int_{-10}^{10}(10-\abs{\tau})R_X{(\tau})d\tau}
+            S=\int_{0}^{10}x(t)dt&=\int_{-5}^{5}x(t)dt\\
+    \text{Let,  }h(t)&=u(t)-u(t-10)\\
+    y(t)=x(t)\ast h(t)&=\int_0^{10}x(t-\tau)d\tau\\
+    \text{Let,  } b&=t-\tau
         \end{align}
         \end{block}
     \end{frame}
-    
+    \section{Solution (a) continued}
+    \begin{frame}{Contd$\ldots$}
+        \begin{block}{Continued}
+      \begin{align}
+\left.y(t)\right|_{t=10}&=\int_0^{10}x(b)db\\
+\text{But,   }E(S^2)&=\int_{-\infty}^{\infty}S_X(f)df
+      \end{align}
+      Where $S_X$ is power spectral density and defined as 
+      \begin{align}
+          S_X(f)= \int_{-\infty}^{\infty} R_X(\tau) d\tau
+      \end{align}
+        \end{block}
+    \end{frame}
+    \section{Solution (a) continued}
+    \begin{frame}{Contd$\ldots$}
+        \begin{block}{Continued}
+        \begin{align}
+            E(S^2)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} R_X(t_1-t_2)dt_1 dt_2\\
+            E(S^2)=\int_{-5}^{5}\int_{-5}^{5}R_X(t_1-t_2)dt_1 dt_2\\
+            \implies\boxed{E(S^2)=\int_{-10}^{10}(10-\abs{\tau})R_X(\tau)d\tau}
+        \end{align}
+        \end{block}
+    \end{frame}
     \section{Solution (b)}
-    \begin{frame}{Solution (b}
+    \begin{frame}{Solution (b)}
         \begin{block}{Solution (b)}
         \begin{align}
         s&=\int_0^{10}x(t)dt\\
