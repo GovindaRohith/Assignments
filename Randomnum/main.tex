@@ -452,17 +452,20 @@ wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/2.3.
 \end{figure}
 \item Find a theoretical expression for $F_V(x)$.\\
 \solution
+If Y = g(X), we know that $F_Y(y) = F_X(g^{-1}(y))$, here 
 \begin{align}
-    V&=-2\ln{(1-U)}\\
-    \implies E(V)&=-2\ln({1-E(U)})\\
-\int_{-\infty}^{x}xp_V(x)dx&=-2\ln{(1-\frac{x^2}{2})}
+V &= -2\ln{(1-U)} \\
+1-U &= e^{\frac{-V}{2}}\\
+U &= 1 - e^{\frac{-V}{2}} \\ 
+F_V(X) &= F_U(1 - e^{\frac{-X}{2}}) 
 \end{align}
-Differentiating the above equation 
-\begin{align}
-    p_{V}(x)&=\frac{4}{2-x^2}\\
-    \implies F_{V}(x)&=\int_{0}^{x}\frac{4dx}{2-x^2}\\
-    \boxed{F_{V}(x)=\sqrt{2}\ln{\frac{\sqrt{2}+x}{\sqrt{2}-x}}}
-\end{align}
+ when , $0 \le 1 - e^{\frac{-X}{2}} \le 1$
+ \begin{align}
+ 0 &\le e^{\frac{-X}{2}} \le 1 \\
+  X &\ge 0 , \text{So,} \\ 
+  F_V(X) &= 1 - e^{\frac{-X}{2}}, X \ge 0 \\
+  F_V(X) &= 0 , X < 0 
+ \end{align}
 %\item
 %Generate the Rayleigh distribution from Uniform. Verify your result through graphical plots.
 \end{enumerate}
