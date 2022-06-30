@@ -268,10 +268,10 @@ wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/1.1.
 wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/source.h
 \end{lstlisting}
 Download the above files and execute the following commands
-\begin{enumerate}
-    \item \$ gcc 1.1.c
-    \item \$ ./a.out
-\end{enumerate}
+\begin{lstlisting}
+$ gcc 1.1.c
+$ ./a.out
+\end{lstlisting}
 \item
 Load the uni.dat file into python and plot the empirical CDF of $U$ using the samples in uni.dat. The CDF is defined as
 \begin{align}
@@ -283,9 +283,9 @@ F_{U}(x) = \pr{U \le x}
 wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/1.2.py
 \end{lstlisting}
 Download the above files and execute the following commands to produce Fig.\ref{fig:1.2}
-\begin{enumerate}
-    \item \$ python3 1.2.py
-\end{enumerate}
+\begin{lstlisting}
+$ python3 1.2.py
+\end{lstlisting}
 \begin{figure}[!h]
 \centering
 \includegraphics[width=\columnwidth]{./figs/1.2.png}
@@ -322,10 +322,10 @@ wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/1.4.
 wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/source.h
 \end{lstlisting}
 Download the above files and execute the following commands
-\begin{enumerate}
-    \item \$ gcc 1.4.c
-    \item \$ ./a.out
-    \end{enumerate}
+\begin{lstlisting}
+$ gcc 1.4.c
+$ ./a.out
+\end{lstlisting}
 \item Verify your result theoretically given that
 \end{enumerate}
 %
@@ -364,10 +364,10 @@ wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/2.1.
 wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/source.h
 \end{lstlisting}
 Download the above files and execute the following commands
-\begin{enumerate}
-    \item \$ gcc 2.1.c
-    \item \$ ./a.out
-    \end{enumerate}
+\begin{lstlisting}
+$ gcc 2.1.c
+$ ./a.out
+\end{lstlisting}
 \item
 Load gau.dat in python and plot the empirical CDF of $X$ using the samples in gau.dat. What properties does a CDF have?\\
 \solution The CDF of $X$ is plotted in Fig. \ref{fig:2.2}\\
@@ -376,9 +376,9 @@ using the code below
 wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/2.2.py
 \end{lstlisting}
 Download the above files and execute the following commands to produce Fig.\ref{fig:2.2}
-\begin{enumerate}
-    \item \$ python3 2.2.py
-\end{enumerate}
+\begin{lstlisting}
+$ python3 2.2.py
+\end{lstlisting}
 \begin{figure}[!h]
 \centering
 \includegraphics[width=\columnwidth]{./figs/2.2.png}
@@ -402,9 +402,9 @@ What properties does the PDF have?
 wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/2.3.py
 \end{lstlisting}
 Download the above files and execute the following commands to produce Fig.\ref{fig:2.3}
-\begin{enumerate}
-    \item \$ python3 2.3.py
-\end{enumerate}
+\begin{lstlisting}
+$ python3 2.3.py
+\end{lstlisting}
 \begin{figure}[!h]
 \centering
 \includegraphics[width=\columnwidth]{./figs/2.3.png}
@@ -424,10 +424,10 @@ wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/2.4.
 wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/source.h
 \end{lstlisting}
 Download the above files and execute the following commands
-\begin{enumerate}
-    \item \$ gcc 2.4.c
-    \item \$ ./a.out
-    \end{enumerate}
+\begin{lstlisting}
+$ gcc 2.4.c
+$ ./a.out
+\end{lstlisting}
 \item Given that 
 \begin{align}
 p_{X}(x) = \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}}, -\infty < x < \infty,
@@ -470,18 +470,18 @@ wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/3.1.
 wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/source.h
 \end{lstlisting}
 Download the above files and execute the following commands
-\begin{enumerate}
-    \item \$ gcc 3.1.c -lm
-    \item \$ ./a.out
-    \end{enumerate}
+\begin{lstlisting}
+$ gcc 3.1.c -lm
+$ ./a.out
+\end{lstlisting}
 The CDF of $V$ is plotted in Fig. \ref{fig:3.1} using the code below
 \begin{lstlisting}
 wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/3.1pyth.py
 \end{lstlisting}
 Download the above files and execute the following commands to produce Fig.\ref{fig:3.1}
-\begin{enumerate}
-    \item \$ python3 3.1pyth.py
-\end{enumerate}
+\begin{lstlisting}
+$ python3 3.1pyth.py
+\end{lstlisting}
 \begin{figure}[!h]
 \centering
 \includegraphics[width=\columnwidth]{./figs/3.1.png}
@@ -495,14 +495,15 @@ If Y = g(X), we know that $F_Y(y) = F_X(g^{-1}(y))$, here
 V &= -2\ln{(1-U)} \\
 1-U &= e^{\frac{-V}{2}}\\
 U &= 1 - e^{\frac{-V}{2}} \\ 
-F_V(X) &= F_U(1 - e^{\frac{-X}{2}}) 
+F_V(x) &= F_U(1 - e^{\frac{-x}{2}}) 
 \end{align}
- when , $0 \le 1 - e^{\frac{-X}{2}} \le 1$
  \begin{align}
- 0 &\le e^{\frac{-X}{2}} \le 1 \\
-  X &\ge 0 , \text{So,} \\ 
-  F_V(X) &= 1 - e^{\frac{-X}{2}}, X \ge 0 \\
-  F_V(X) &= 0 , X < 0 
+\implies
+  F_V(x)=
+  \begin{cases}
+   0                         & x < 0 \\
+	1 - e^{\frac{-x}{2}} & x \geq 0
+	\end{cases}
  \end{align}
 %\item
 %Generate the Rayleigh distribution from Uniform. Verify your result through graphical plots.
