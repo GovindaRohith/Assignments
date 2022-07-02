@@ -1,20 +1,32 @@
-\let\negmedspace\undefined
-\let\negthickspace\undefined
-%\RequirePackage{amsmath}
 \documentclass[journal,12pt,twocolumn]{IEEEtran}
-%
-% \usepackage{setspace}
- \usepackage{gensymb}
-  \usepackage[misc]{ifsym}
+\usepackage{setspace}
+\usepackage{gensymb}
+\usepackage{caption}
+%\usepackage{multirow}
+%\usepackage{multicolumn}
+%\usepackage{subcaption}
 %\doublespacing
- \usepackage{polynom}
-%\singlespacing
-%\usepackage{silence}
-%Disable all warnings issued by latex starting with "You have..."
-%\usepackage{graphicx}
+\singlespacing
+\usepackage{csvsimple}
+\usepackage{amsmath}
+\usepackage{multicol}
+%\usepackage{enumerate}
 \usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{newfloat}
+%\usepackage{syntax}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+
+
+%\usepackage{graphicx}
+%\usepackage{amssymb}
 %\usepackage{relsize}
-\usepackage[cmex10]{amsmath}
+%\usepackage[cmex10]{amsmath}
+%\usepackage{mathtools}
 %\usepackage{amsthm}
 %\interdisplaylinepenalty=2500
 %\savesymbol{iint}
@@ -22,32 +34,27 @@
 %\restoresymbol{TXF}{iint}
 %\usepackage{wasysym}
 \usepackage{amsthm}
-%\usepackage{pifont}
-%\usepackage{iithtlc}
-% \usepackage{mathrsfs}
-% \usepackage{txfonts}
- \usepackage{stfloats}
-% \usepackage{steinmetz}
- \usepackage{bm}
-% \usepackage{cite}
-% \usepackage{cases}
-% \usepackage{subfig}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{mathtools}
+\usepackage{caption}
+\usepackage{enumerate}	
+\usepackage{enumitem}
+\usepackage{amsmath}
 %\usepackage{xtab}
 \usepackage{longtable}
-%\usepackage{multirow}
+\usepackage{multirow}
 %\usepackage{algorithm}
 %\usepackage{algpseudocode}
 \usepackage{enumitem}
- \usepackage{mathtools}
- \usepackage{tikz}
-% \usepackage{circuitikz}
-% \usepackage{verbatim}
-%\usepackage{tfrupee}
-\usepackage[breaklinks=true]{hyperref}
-%\usepackage{stmaryrd}
-%\usepackage{tkz-euclide} % loads  TikZ and tkz-base
-%\usetkzobj{all}
+\usepackage{mathtools}
+\usepackage{hyperref}
+%\usepackage[framemethod=tikz]{mdframed}
 \usepackage{listings}
+    %\usepackage[latin1]{inputenc}                                 %%
     \usepackage{color}                                            %%
     \usepackage{array}                                            %%
     \usepackage{longtable}                                        %%
@@ -57,62 +64,87 @@
     \usepackage{ifthen}                                           %%
   %optionally (for landscape tables embedded in another document): %%
     \usepackage{lscape}     
-% \usepackage{multicol}
-% \usepackage{chngcntr}
-%\usepackage{enumerate}
-\usepackage{tfrupee}
+
+
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+
+
+%\usepackage{stmaryrd}
+
 
 %\usepackage{wasysym}
 %\newcounter{MYtempeqncnt}
 \DeclareMathOperator*{\Res}{Res}
-\DeclareMathOperator*{\equals}{=}
 %\renewcommand{\baselinestretch}{2}
-%\renewcommand\thesection{\arabic{section}}
-%\renewcommand\thesubsection{\thesection.\arabic{subsection}}
-%\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
 
-%\renewcommand\thesectiondis{\arabic{section}}
-%\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
-%\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
-\def\inputGnumericTable{}                                 %%
 
+%\lstset{
+%language=C,
+%frame=single, 
+%breaklines=true
+%}
+
+%\lstset{
+	%%basicstyle=\small\ttfamily\bfseries,
+	%%numberstyle=\small\ttfamily,
+	%language=Octave,
+	%backgroundcolor=\color{white},
+	%%frame=single,
+	%%keywordstyle=\bfseries,
+	%%breaklines=true,
+	%%showstringspaces=false,
+	%%xleftmargin=-10mm,
+	%%aboveskip=-1mm,
+	%%belowskip=0mm
+%}
+
+%\surroundwithmdframed[width=\columnwidth]{lstlisting}
+\def\inputGnumericTable{}                                 %%
 \lstset{
 %language=C,
 frame=single, 
 breaklines=true,
 columns=fullflexible
 }
-%\lstset{
-%language=tex,
-%frame=single, 
-%breaklines=true
-%}
+ 
+
 \begin{document}
-
 %
-
-
+\tikzstyle{block} = [rectangle, draw,
+    text width=3em, text centered, minimum height=3em]
+\tikzstyle{sum} = [draw, circle, node distance=3cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+\providecommand{\e}[1]{\ensuremath{E\left(#1\right)}}
+\providecommand{\es}[1]{\ensuremath{E\left[#1\right]}}
+\theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{problem}{Problem}
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{example}{Example}[section]
-\newtheorem{definition}[problem]{Definition}
-%\newtheorem{thm}{Theorem}[section] 
-%\newtheorem{defn}[thm]{Definition}
+\newtheorem{definition}{Definition}[section]
 %\newtheorem{algorithm}{Algorithm}[section]
 %\newtheorem{cor}{Corollary}
 \newcommand{\BEQA}{\begin{eqnarray}}
 \newcommand{\EEQA}{\end{eqnarray}}
 \newcommand{\define}{\stackrel{\triangle}{=}}
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-    \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 \bibliographystyle{IEEEtran}
 %\bibliographystyle{ieeetr}
+\providecommand{\nCr}[2]{\,^{#1}C_{#2}} % nCr
+\providecommand{\nPr}[2]{\,^{#1}P_{#2}} % nPr
 \providecommand{\mbf}{\mathbf}
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
 \providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
@@ -128,44 +160,51 @@ columns=fullflexible
 \theoremstyle{remark}
 \newtheorem{rem}{Remark}
 \newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\Vert#1\right\Vert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
 \providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
 %\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
 \providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
 	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
 \newcommand{\solution}{\noindent \textbf{Solution: }}
-\newcommand{\cosec}{\,\text{cosec}\,}
-\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
-\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 %\numberwithin{equation}{section}
-%\numberwithin{figure}{section}
-%\numberwithin{table}{section}
-%\numberwithin{equation}{subsection}
-%\numberwithin{problem}{section}
-%\numberwithin{definition}{section}
+%\numberwithin{problem}{subsection}
+%\numberwithin{definition}{subsection}
 \makeatletter
-\@addtoreset{figure}{problem}
+\@addtoreset{figure}{section}
 \makeatother
 \let\StandardTheFigure\thefigure
-\let\vec\mathbf
 %\renewcommand{\thefigure}{\theproblem.\arabic{figure}}
-\renewcommand{\thefigure}{\theproblem}
-%\setlist[enumerate,1]{before=\renewcommand\theequation{\theenumi.\arabic{equation}}
-%\counterwithin{equation}{enumi}
-%\renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}
-\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
-     \def\rightbox#1{\makebox[0in][r]{#1}}
-     \def\centbox#1{\makebox[0in]{#1}}
-     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
-     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
-\title{
-	%\logo{
-%Computational Approach to School Geometry
-	Assignment
-%	}
+\renewcommand{\thefigure}{\thesection}
+%\numberwithin{figure}{subsection}
+%\numberwithin{equation}{subsection}
+%\numberwithin{equation}{section}
+%\numberwithin{equation}{problem}
+%\numberwithin{problem}{subsection}
+\numberwithin{problem}{section}
+%%\numberwithin{definition}{subsection}
+%\makeatletter
+%\@addtoreset{figure}{problem}
+%\makeatother
+\makeatletter
+\@addtoreset{table}{section}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\StandardTheTable\thetable
+\let\vec\mathbf
+\numberwithin{equation}{section}
+\vspace{3cm}
+\title{%Convex Optimization in Python
+	{
+	Random Numbers
+	}
 }
-\author{ Govinda Rohith Y\\CS21BTECH11062% <-this % stops a space
-}	
 %\title{
 %	\logo{Matrix Analysis through Octave}{\begin{center}\includegraphics[scale=.24]{tlc}\end{center}}{}{HAMDSP}
 %}
@@ -182,9 +221,7 @@ columns=fullflexible
 % a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
 % was not built to handle multiple paragraphs
 %
-%\author{<-this % stops a space
-%\thanks{}}
-%}
+\author{ SADINENI ABHINAY - CS21BTECH11055}
 % note the % following the last \IEEEmembership and also \thanks - 
 % these prevent an unwanted space from occurring between the last author name
 % and the end of the author line. i.e., if you had this:
@@ -202,7 +239,6 @@ columns=fullflexible
 % you are supposed to have spaces between the names. For what it is worth,
 % this is a minor point as most people would not even notice if the said evil
 % space somehow managed to creep in.
-%\WarningFilter{latex}{LaTeX Warning: You have requested, on input line 117, version}
 % The paper headers
 %\markboth{Journal of \LaTeX\ Class Files,~Vol.~6, No.~1, January~2007}%
 %{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
@@ -220,38 +256,10 @@ columns=fullflexible
 % column for its text to clear the IEEEpubid mark.
 % make the title area
 \maketitle
-
 \tableofcontents
-
 \bigskip
-
 \renewcommand{\thefigure}{\theenumi}
 \renewcommand{\thetable}{\theenumi}
-%\renewcommand{\theequation}{\theenumi}
-%\begin{abstract}
-%%\boldmath
-%In this letter, an algorithm for evaluating the exact analytical bit error rate  (BER)  for the piecewise linear (PL) combiner for  multiple relays is presented. Previous results were available only for upto three relays. The algorithm is unique in the sense that  the actual mathematical expressions, that are prohibitively large, need not be explicitly obtained. The diversity gain due to multiple relays is shown through plots of the analytical BER, well supported by simulations. 
-%
-%\end{abstract}
-% IEEEtran.cls defaults to using nonbold math in the Abstract.
-% This preserves the distinction between vectors and scalars. However,
-% if the journal you are submitting to favors bold math in the abstract,
-% then you can use LaTeX's standard command \boldmath at the very start
-% of the abstract to achieve this. Many IEEE journals frown on math
-% in the abstract anyway.
-% Note that keywords are not normally used for peerreview papers.
-%\begin{IEEEkeywords}
-%Cooperative diversity, decode and forward, piecewise linear
-%\end{IEEEkeywords}
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
-%\IEEEpeerreviewmaketitle
 \begin{abstract}
 This manual provides solutions to the Assignment of Random Numbers
 \end{abstract}
@@ -491,7 +499,7 @@ $ python3 3.1pyth.py
 \begin{figure}[!h]
 \centering
 \includegraphics[width=\columnwidth]{./figs/3.1.png}
-\caption{The CDF of $X$}
+\caption{The CDF of $V$}
 \label{fig:3.1}
 \end{figure}
 \item Find a theoretical expression for $F_V(x)$.\\
@@ -513,5 +521,99 @@ F_V(x) &= F_U(1 - e^{\frac{-x}{2}})
  \end{align}
 %\item
 %Generate the Rayleigh distribution from Uniform. Verify your result through graphical plots.
+\end{enumerate}
+\section{Triangular Distribution}
+\begin{enumerate}[label=\thesection.\arabic*
+,ref=\thesection.\theenumi]
+    \item Generate
+    \begin{align}
+        T=U_1+U_2
+    \end{align}
+    \solution Download the following files and execute the  C program.
+\begin{lstlisting}
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/4.1.c
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/source.h
+\end{lstlisting}
+Download the above files and execute the following commands
+\begin{lstlisting}
+$ gcc 4.1.c
+$ ./a.out
+\end{lstlisting}
+\item Find the CDF of $T$.\\
+\solution The CDF of $T$ is plotted in Fig. \ref{fig:4.2} using the code below
+\begin{lstlisting}
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/4.5cdf.py
+\end{lstlisting}
+Download the above files and execute the following commands to produce Fig.\ref{fig:4.2}
+\begin{lstlisting}
+$ python3 4.5cdf.py
+\end{lstlisting}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\columnwidth]{./figs/4.5cdf.png}
+\caption{The CDF of $T$}
+\label{fig:4.2}
+\end{figure}
+\item Find the PDF of $T$.\\
+\solution The PDF of $T$ is plotted in Fig. \ref{fig:4.2} using the code below
+\begin{lstlisting}
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/4.5pdf.py
+\end{lstlisting}
+Download the above files and execute the following commands to produce Fig.\ref{fig:4.2}
+\begin{lstlisting}
+$ python3 4.5pdf.py
+\end{lstlisting}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\columnwidth]{./figs/4.5cdf.png}
+\caption{The CDF of $T$}
+\label{fig:4.3}
+\end{figure}
+\item Find the Theoreotical Expression for the PDF and CDF of $T$\\
+\solution
+\begin{align}
+    T&=U_1+U_2\\
+    \implies p_T(t)&=\int_{-\infty}^{t}p_{U1}(x)p_{U1}(y)dx\\
+    \text{As,}p_{U1}(x)&=p_{U1}(y)=p_{U}(u)\\
+    \implies p_T(t)&=\int_{-\infty}^{t}p_{U}(u)p_{U}(t-u)du
+    \end{align}
+    \begin{enumerate}
+        \item Theoretical PDF 
+        \begin{enumerate}
+            \item $t\le 1$
+            \begin{align}
+                p_T(t)&=\int_{0}^{t}p_{U}(t-u)du\\
+                \implies p_T(t)&=\int_{0}^{t} du=t
+            \end{align}
+            \item $t> 1$
+             \begin{align}
+                p_T(t)&=\int_{0}^{1}p_{U}(t-u)du\\
+                \implies p_T(t)&=\int_{t-1}^{1} du=2-t
+            \end{align}
+        \end{enumerate}
+        $\implies\boxed{ P_T(t) =
+        \begin{cases}
+         t     &0 \le t \le 1 \\
+         2-t   &1 < t \le 2\\
+         0     &t<0 \text{ or }t>2
+        \end{cases}
+        }$\\
+        \item Theoretical CDF 
+        \begin{align}
+            F_T(t)=\int_{-\infty}^{t}p_T(u)du
+        \end{align}
+        $\implies\boxed{
+            F_{T}(t)=
+            \begin{cases}
+             0   &t<0\\
+             \dfrac{t^2}{2} &0\le t \le 1\\
+             2t-1-\dfrac{t^2}{2} &1<t \le 2\\
+             1 &t>2
+            \end{cases}
+            }$\\
+    \end{enumerate}
+\item Verify your results through a plot \\
+\solution The Results are verfied in the plots
+Fig \ref{fig:4.2} and Fig \ref{fig:4.3}
 \end{enumerate}
 \end{document}

@@ -1,35 +1,35 @@
-#Importing numpy, scipy, mpmath and pyplot
+from more_itertools import sample
 import numpy as np
-import matplotlib
-import mpmath as mp
-matplotlib.rcParams['backend'] = 'GTK3Agg'
 import matplotlib.pyplot as plt
+import mpmath as mp
+
+simlen = 1000000
+sample = np.loadtxt('custom.dat',dtype='double')
 
 
-x = np.linspace(-10,10,50)#points on the x axis
+x = np.linspace(-5,5,40)
+CF=[]
+for i in range(0,40):
+	CF_ind = np.nonzero(sample < x[i]) 
+	CF_n = np.size(CF_ind)
+	CF.append(CF_n/simlen) 
+
+def g(x) :
+   return (1-mp.exp(-x/2))
+
 def cdf(x):
-  if(x<0):
-    return 0
-  else:
-    p=mp.exp(-x/2)
-    return 1-p
-simlen = int(1e6) #number of samples
-err = [] #declaring probability list
-#randvar = np.random.normal(0,1,simlen)
-randvar = np.loadtxt('uni.dat',dtype='double')
-randvar = -2*np.log(1 - randvar)
-#randvar = np.loadtxt('gau.dat',dtype='double')
-for i in range(0,50):
-	err_ind = np.nonzero(randvar < x[i]) #checking probability condition
-	err_n = np.size(err_ind) #computing the probability
-	err.append(err_n/simlen) #storing the probability values in a list
-theory=np.vectorize(cdf,otypes=[float])
-#print(theory(x))
-plt.plot(x,err,'bo',color="blue")#plotting the CDF
-plt.plot(x,theory(x),color="orange")
-plt.grid() #creating the grid
-plt.xlabel('$v$')
-plt.ylabel('$F_V(v)$')
-plt.legend(["Numerical", "Theory"])
-#plt.savefig('../figs/exp_cdf.png')
+
+   if x<0 :
+         return 0
+   else:
+         return g(x)
+         
+y=[-3,-2,1,2,3,4]
+CDF = np.vectorize(cdf, otypes=['double'])
+         
+plt.plot(x[0:40].T,CF,"o")
+plt.plot(x,CDF(x))
+plt.grid()
+plt.xlabel('$x$')
+plt.ylabel('$F_X(x)$')
 plt.show()
