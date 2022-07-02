@@ -24,9 +24,9 @@ for i in range(0,80):
 	
 plt.grid() #creating the grid
 
-plt.plot(x,err,'bo')#plotting empirical CDF
+plt.plot(x,err,'bo')#plotting Stimulation CDF
 
-plt.plot(x,ty,color="orange")#plotting analytical CDF
+plt.plot(x,ty,color="orange")#plotting Theory CDF
 
 plt.xlabel('$x$')
 plt.ylabel('$F_X(x)$')
