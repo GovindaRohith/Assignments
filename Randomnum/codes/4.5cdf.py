@@ -18,12 +18,14 @@ def tri_cdf(x):
     if(x>=0 and x<=1):
     	return x*x/2
     elif (x>1 and x<=2):
-        return 2*x
+        return 1-(x-2)*(x-2)/2
+    elif (x>2):
+    	return 1
     else:
-    	return 0
+        return 0
 theory=np.vectorize(tri_cdf,otypes=['double'])
 
-plt.plot(x.T,err)#plotting the CDF
+plt.plot(x.T,err,'o')#plotting the CDF
 plt.plot(x,theory(x))
 plt.grid() #creating the grid
 plt.xlabel('$x$')

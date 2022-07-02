@@ -27,13 +27,18 @@ for i in range(0,maxrange-1):
 	test = (err[i+1]-err[i])/(x[i+1]-x[i])
 	pdf.append(test) #storing the pdf values in a list
 
-def tri_pdf(x):
-	return 1/mp.sqrt(2*np.pi)*np.exp(-x**2/2.0)
-	
-tri_pdf = scipy.vectorize(tri_pdf)
-
+def tri_cdf(x):
+    if(x>=0 and x<1):
+    	return x
+    elif(x==1):
+     	return 1
+    elif (x>1 and x<=2):
+        return 2-x
+    else:
+        return 0
+theory=np.vectorize(tri_cdf,otypes=['double'])
 plt.plot(x[0:(maxrange-1)].T,pdf,'o')
-#plt.plot(x,tri_pdf(x))#plotting the CDF
+plt.plot(x,theory(x))
 plt.grid() #creating the grid
 plt.xlabel('$x_i$')
 plt.ylabel('$p_X(x_i)$')
