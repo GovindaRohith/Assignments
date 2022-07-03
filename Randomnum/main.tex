@@ -462,8 +462,14 @@ repeat the above exercise theoretically.
     \end{align}
     \item Variance is given by
     \begin{align}
-        \text{var}\sbrak{U}=E(U^2)-(E(U))^2\\
-        \implies\boxed{\text{var}\sbrak{U}=\sqrt{2}}
+        \text{var}\sbrak{U}&=E(U^2)-(E(U))^2\\
+E{x^2}&=\int_{-\infty}^{\infty}x^2p_X(x)dx \\
+&=\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}x^2exp\brak{-\frac{x^2}{2}}dx \\
+&=\frac{1}{\sqrt{2\pi}}\brak{x\int x exp\brak{-\frac{x^2}{2}}dx}
+\\ &-\frac{1}{\sqrt{2\pi}}\int \int \brak{x exp\brak{-\frac{x^2}{2}}}dx. dx\\
+&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}exp\brak{-\frac{x^2}{2}}dx \\
+&=\frac{\sqrt{2\pi}}{\sqrt{2\pi}}\\&=1
+        \implies\boxed{\text{var}\sbrak{U}=1}
     \end{align}
 \end{enumerate}
 \section{From Uniform to Other}

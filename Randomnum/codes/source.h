@@ -5,6 +5,10 @@ double meansquare(char *str);
 void gaussian(char *str, int len);
 void summerofuni(char *str,char *str1);
 void sumofuni(char *tri,int len);
+void equiprobable(char *str,int len);
+int signum(double a);
+void combo(char *str,int len);
+void gausquare(char *str,int len);
 //end declaration
 
 //uniform func generator
@@ -90,6 +94,7 @@ fprintf(fp,"%lf\n",temp);
 fclose(fp);
 
 }
+//Function to generate the sum of two uniform distributions
 void sumofuni(char *tri,int len)
 {
 int i;
@@ -114,3 +119,71 @@ fclose(destinyfile);
 remove("uni1.dat");
 remove("uni2.dat");
 }
+
+int signum(double a)
+{
+    if(a>=0)
+    {
+        return 1;
+    }
+    else
+    {
+        return -1;
+    }
+}
+//Function to generate equiprobable distribution belongs to {-1,1}
+void equiprobable(char *str,int len)
+{
+    int i;
+    FILE *fp;
+    fp=fopen(str,"w");
+    for (i = 0; i < len; i++)
+    {
+    fprintf(fp,"%d\n",signum(2*(double)rand()/(double)RAND_MAX - 1));
+    }
+    fclose(fp);
+}
+void combo(char *str,int len)
+{
+int i,j,equi;
+double temp;
+FILE *fp;
+
+fp = fopen(str,"w");
+//Generate numbers
+for (i = 0; i < len; i++)
+{
+temp = 0;
+equi=signum(2*(double)rand()/(double)RAND_MAX - 1);
+for (j = 0; j < 12; j++)
+{
+temp += (double)rand()/RAND_MAX;
+}
+temp-=6;
+fprintf(fp,"%lf\n",5*equi+temp);
+}
+fclose(fp);
+}
+void gausquare(char *str,int len)
+{
+FILE *fp,*gau1,*gau2;
+int i;
+double f1,f2;
+gaussian("gau1.dat",len);
+gaussian("gau2.dat",len);
+gau1=fopen("gau1.dat","r");
+gau2=fopen("gau2.dat","r");
+fp=fopen(str,"w");
+for(i=0;i<len;i++)
+{
+  fscanf(gau1,"%lf",&f1);
+  fscanf(gau2,"%lf",&f2);
+  fprintf(fp,"%lf\n",f1*f1+f2*f2);
+}
+fclose(fp);
+fclose(gau1);
+fclose(gau2);
+remove("gau1.dat");
+remove("gau2.dat");
+}
+
