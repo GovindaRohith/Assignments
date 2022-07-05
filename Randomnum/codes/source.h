@@ -116,8 +116,8 @@ fprintf(destinyfile,"%lf\n",(double)(x+y));
 fclose(fp);
 fclose(fp2);
 fclose(destinyfile);
-remove("uni1.dat");
-remove("uni2.dat");
+// remove("uni1.dat");
+// remove("uni2.dat");
 }
 
 int signum(double a)

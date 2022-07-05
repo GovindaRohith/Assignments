@@ -27,8 +27,15 @@ for i in range(0,maxrange-1):
 	test = (err[i+1]-err[i])/(x[i+1]-x[i])
 	pdf.append(test) #storing the pdf values in a list
 
+def sumofgau(x):
+    if(x>=0 ):
+    	return 1-mp.exp(-0.5*x)
+    else:
+        return 0
+theory=np.vectorize(sumofgau,otypes=['double'])
 
 plt.plot(x[0:(maxrange-1)].T,pdf,'o')
+plt.plot(x,theory(x))
 plt.grid() #creating the grid
 plt.xlabel('$x_i$')
 plt.ylabel('$p_X(x_i)$')
