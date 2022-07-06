@@ -16,7 +16,6 @@ h = 2*maxlim/(maxrange-1);
 #randvar = np.loadtxt('uni.dat',dtype='double')
 randvar = np.loadtxt('gausquare.dat',dtype='double')
 
-randvar=np.sqrt(randvar);
 for i in range(0,maxrange):
 	err_ind = np.nonzero(randvar < x[i]) #checking probability condition
 	err_n = np.size(err_ind) #computing the probability
@@ -29,7 +28,7 @@ for i in range(0,maxrange-1):
 
 def sumofgau(x):
     if(x>=0 ):
-    	return 1-mp.exp(-0.5*x)
+    	return mp.exp(-x/2)/2
     else:
         return 0
 theory=np.vectorize(sumofgau,otypes=['double'])
