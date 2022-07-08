@@ -697,8 +697,17 @@ $ ./a.out
 P_{e|0}=0.499035\\
 P_{e|1}=0.500176
 \end{align}
-\item Find $P_e$ assuming that $X$ has equiprobable symbols.
-%
+\item Find $P_e$ assuming that $X$ has equiprobable symbols.\\
+\solution
+\begin{align}
+    P_e=P(X=1)P_{e|0}+P(X=-1)P_{e|1}
+\end{align}
+Since X is equiprobable
+\begin{align}
+    P(X=1)=P(X=-1)=0.5\\
+    \implies P_e=\frac{P_{e|0}+P_{e|1}}{2}\\
+    \implies \boxed{P_e=Q_N(A)}
+\end{align}
 \item
 Verify by plotting  the theoretical $P_e$ with respect to $A$ from 0 to 10 dB.  
 %
@@ -786,18 +795,17 @@ f_{R, \Theta} \brak{r, \theta} &=
 		f_{R, \Theta} \brak{r, \theta} \, d\theta\\
 		f_R(r) &= \int_{0}^{2\pi}
 		\frac{re^\frac{{-r^2}}{2}}{2\pi} \, d\theta\\
-		\implies \boxed{f_R(r)=re^{\frac{-r^2}{2}}}
-\end{align}
-
+		\implies \boxed{f_R(r)=re^{\frac{-r^2}{2}}}\\
+		    F_V(r)&=F_{X_1^2+X_2^2}(r)\\
+		    \implies F_V(r)&=F_{R^2}(r)
+		    \end{align}
 		\begin{align}
-		    F_V(r)=F_{X_1^2+X_2^2}(r)\\
-		    \implies F_V(r)=F_{R^2}(r)\\
-		    \implies F_V(r)=\Pr{(R^2\le x)}\\
-		    \implies F_V(r)=\Pr{(R\le \sqrt{x})}\\
-		    \text{But }F_V(x)=\Pr{(R\le x)}\\
-		    \implies F_V(x)=\int _{0}^{x}f_R(r)dr\\
+		    \implies F_V(r)&=\Pr{(R^2\le x)}\\
+		    \implies F_V(r)&=\Pr{(R\le \sqrt{x})}\\
+		    \text{But }F_V(x)&=\Pr{(R\le x)}\\
+		    \implies F_V(x)&=\int _{0}^{x}f_R(r)dr\\
 F_V(x)&=1-e^{\frac{-x^2}{2}}\\
-\implies F_V(r)=\begin{cases}
+\implies F_V(r)&=\begin{cases}
 0 & r<0\\
 1-e^{\frac{-r}{2}} &r\ge 0\\
 \end{cases}
