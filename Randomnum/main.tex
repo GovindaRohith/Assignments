@@ -809,7 +809,30 @@ F_V(x)&=1-e^{\frac{-x^2}{2}}\\
 \begin{align}
     A=\sqrt{V}
 \end{align}
-\solution: 
+\solution: For $r\ge 1$
+\begin{align}
+	F_A(r) &= \pr{A \leq r} \\
+	&= \pr{\sqrt{V} \leq r} \\
+	&= \pr{V \leq r^2} \\
+	&= F_V(r^2) = 1 - e^{-\frac{r^2}{2}}
+\end{align}
+and so on differentiating 
+\begin{align}
+	f_A(r) = re^{-\frac{r^2}{2}}
+\end{align}
+Thus, the CDF and PDF of $A$ is given by
+\begin{align}
+	F_V(r) = 
+	\begin{cases}
+		1 - e^{-\frac{r^2}{2}} & r \geq 0 \\
+		0 & r < 0 
+	\end{cases} \label{eq:ral-cdf} \\
+	p_V(r) = 
+	\begin{cases}
+		re^{-\frac{r}{2}} & r \geq 0 \\
+		0 & r < 0
+	\end{cases} \label{eq:ral-pdf} 
+\end{align}
 The CDF and PDF of $A$ is plotted in Fig. \ref{fig:6.1cdf} and \ref{fig:6.1pdf} using the codes below
 \begin{lstlisting}
 wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/6.3cdf.py
@@ -833,11 +856,5 @@ $ python3 6.3pdf.py
 \label{fig:6.3pdf}
 \end{figure}
 \end{enumerate}
-\section{Conditional Probablity}
-\begin{enumerate}[label=\thesection.\arabic*
-,ref=\thesection.\theenumi]
-\item HELLO WORLDS
-%write whatever for section 7
-\end{enumerate}%This is the end enumeration for the Section 7
 \end{enumerate}
 \end{document}
