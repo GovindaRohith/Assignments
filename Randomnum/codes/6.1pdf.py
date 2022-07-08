@@ -11,7 +11,7 @@ x = np.linspace(-maxlim,maxlim,maxrange)#points on the x axis
 simlen = int(1e6) #number of samples
 err = [] #declaring probability list
 pdf = [] #declaring pdf list
-h = 2*maxlim/(maxrange-1);
+h = 2*maxlim/(maxrange-1)
 #randvar = np.random.normal(0,1,simlen)
 #randvar = np.loadtxt('uni.dat',dtype='double')
 randvar = np.loadtxt('gausquare.dat',dtype='double')
@@ -27,10 +27,10 @@ for i in range(0,maxrange-1):
 	pdf.append(test) #storing the pdf values in a list
 
 def sumofgau(x):
-    if(x>=0 ):
-    	return mp.exp(-x/2)/2
-    else:
-        return 0
+ if(x>=0 ):
+  return mp.exp(-x/2)/2
+ else:
+  return 0
 theory=np.vectorize(sumofgau,otypes=['double'])
 
 plt.plot(x[0:(maxrange-1)].T,pdf,'o')

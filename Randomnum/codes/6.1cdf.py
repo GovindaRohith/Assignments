@@ -16,10 +16,10 @@ for i in range(0,30):
 	err.append(err_n/simlen) #storing the probability values in a list
 
 def sumofgau(x):
-    if(x>=0 ):
-     	return 1-mp.exp(-0.5*x)
-    else :
-     	return 0
+ if(x>=0 ):
+  return 1-mp.exp(-0.5*x)
+ else :
+  return 0
  
 theory=np.vectorize(sumofgau,otypes=['double'])
 plt.plot(x.T,err,'o')#plotting the CDF
