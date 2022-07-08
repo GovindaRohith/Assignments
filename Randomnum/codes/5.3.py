@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 simlen = 1000000
 randvar=np.loadtxt('combo.dat',dtype='double')
 x = range(simlen)
-plt.plot(x,randvar)
+plt.scatter(x,randvar)
 plt.grid() 
 plt.xlabel('numbers')
 plt.ylabel('Y')
