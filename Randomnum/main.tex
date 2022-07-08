@@ -151,6 +151,7 @@ columns=fullflexible
 \providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
 \providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
 \providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\gauss}[2]{\mathcal{N}\ensuremath{\left(#1,#2\right)}}
 \providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
 \providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
 \providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
@@ -171,6 +172,7 @@ columns=fullflexible
 	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
 \newcommand{\solution}{\noindent \textbf{Solution: }}
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
 \providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 %\numberwithin{equation}{section}
@@ -621,5 +623,221 @@ $ python3 4.5pdf.py
 \item Verify your results through a plot \\
 \solution The Results are verfied in the plots
 Fig \ref{fig:4.2} and Fig \ref{fig:4.3}
+\section{Guasssian to Other}
+\begin{enumerate}[label=\thesection.\arabic*
+,ref=\thesection.\theenumi]
+\item Generate equiprobable $X \in \cbrak{1,-1}$.
+\solution Download the following files and execute the  C program.
+\begin{lstlisting}
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/5.1.c
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/source.h
+\end{lstlisting}
+Download the above files and execute the following commands
+\begin{lstlisting}
+$ gcc 5.1.c
+$ ./a.out
+\end{lstlisting}
+\item Generate
+\begin{align}
+    Y=AX+N,
+\end{align}
+Where A=5 dB and $N\sim \gauss{0}{1}$\\
+\solution:
+\begin{lstlisting}
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/5.2.c
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/source.h
+\end{lstlisting}
+Download the above files and execute the following commands
+\begin{lstlisting}
+$ gcc 5.2.c
+$ ./a.out
+\end{lstlisting}
+	\item Plot $Y$ using a scatter plot.\\
+	\solution
+	The CDF of $V$ is plotted in Fig. \ref{fig:5.3} using the code below
+\begin{lstlisting}
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/5.3.py
+\end{lstlisting}
+Download the above files and execute the following commands to produce Fig.\ref{fig:5.3}
+\begin{lstlisting}
+$ python3 5.3.py
+\end{lstlisting}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\columnwidth]{./figs/5.3.png}
+\caption{The Scatter Plot}
+\label{fig:5.3}
+\end{figure}
+	\item Guess how to estimate $X$ from $Y$.\\
+	\solution:
+	\begin{enumerate}
+	    \item If $Y<0$ then probably $X=-1$
+	    \item If $Y>0$ then probably $X=1$
+	\end{enumerate}
+\label{ml-ch4_sim}
+Find 
+\begin{equation}
+	P_{e|0} = \pr{\hat{X} = -1|X=1}
+\end{equation}
+and 
+\begin{equation}
+	P_{e|1} = \pr{\hat{X} = 1|X=-1}
+\end{equation}
+	\solution:
+\begin{lstlisting}
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/5.5.c
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/source.h
+\end{lstlisting}
+Download the above files and execute the following commands to get the result
+\begin{lstlisting}
+$ gcc 5.5.c
+$ ./a.out
+\end{lstlisting}
+\begin{align}
+P_{e|0}=0.499035\\
+P_{e|1}=0.500176
+\end{align}
+\item Find $P_e$ assuming that $X$ has equiprobable symbols.
+%
+\item
+Verify by plotting  the theoretical $P_e$ with respect to $A$ from 0 to 10 dB.  
+%
+\item Now, consider a threshold $\delta$  while estimating $X$ from $Y$. Find the value of $\delta$ that maximizes the theoretical $P_e$.
+\item Repeat the above exercise when 
+	\begin{align}
+		p_{X}(0) = p
+	\end{align}
+\item Repeat the above exercise using the MAP criterion.
+		\end{enumerate}
+\section{Guasssian to Other}
+\begin{enumerate}[label=\thesection.\arabic*
+,ref=\thesection.\theenumi]
+\item Let $X_1  \sim N(0,1) $ and $X_2  \sim N(0,1) $.Plot the CDF and PDF of 
+\begin{align}
+    V=X_1^2+X_2^2
+    \end{align}
+\solution\\
+The CDF and PDF of $V$ is plotted in Fig. \ref{fig:6.1cdf} and \ref{fig:6.1pdf} using the codes below
+\begin{lstlisting}
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/6.1cdf.py
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/6.1pdf.py
+\end{lstlisting}
+Download the above files and execute the following commands to produce Fig.\ref{fig:6.1cdf} and \ref{fig:6.1pdf}
+\begin{lstlisting}
+$ python3 6.1cdf.py
+$ python3 6.1pdf.py
+\end{lstlisting}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\columnwidth]{./figs/6.1cdf.png}
+\caption{The CDF of $V$}
+\label{fig:6.1cdf}
+\end{figure}
+\addtocounter{figure}{+1}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\columnwidth]{./figs/6.1pdf.png}
+\caption{The PDF of $V$}
+\label{fig:6.1pdf}
+\end{figure}
+\item If
+%
+\begin{equation}
+F_{V}(x) = 
+\begin{cases}
+1 - e^{-\alpha x} & x \geq 0 \\
+0 & x < 0,
+\end{cases}
+\end{equation}
+%
+find $\alpha$.\\
+\solution
+Assuming $X_1$ and $X_2$ are i.i.d\\
+\begin{align}
+X_1 = r\cos \Theta  \\
+X_2 = r\sin \Theta 
+\end{align}
+The Jacobian matrix transforming $r, \Theta$ to $X_1,X_2$  is defined as 
+\begin{align}
+	\vec{J} &= \myvec{
+		\frac{\partial X_1}{\partial r}
+		& \frac{\partial X_1}{\partial \Theta} \\
+		\frac{\partial X_2}{\partial r}
+		&\frac{\partial X_2}{\partial \Theta}
+		}\\
+		\implies \vec{J} &= \myvec{
+		\cos{\Theta}
+		& -r\sin{\Theta} \\
+		\sin{\Theta}
+		&r\cos{\Theta}
+		}\\
+		\implies \mydet{\vec{J}}&=r\\
+		\end{align}
+		\begin{align}
+f_{X_1,X_2}(x_1,x_2)&=f_{X_1}(x_1)f_{X_2}(x_2)\\
+\implies f_{X_1,X_2}(x_1,x_2)&=\frac{e^\frac{{-x_1^2-x_2^2}}{2}}{2\pi}\\
+\implies f_{X_1,X_2}(x_1,x_2)&=\frac{e^\frac{{-r^2}}{2}}{2\pi}\\
+f_{R, \Theta} \brak{r, \theta} &= 
+	f_{X_1,X_2}\brak{x_1,x_2} \mydet{\vec{J}}
+	\end{align}
+	\begin{align}
+	\implies f_{R, \Theta} \brak{r, \theta} &= \frac{re^\frac{{-r^2}}{2}}{2\pi}\\
+	f_R(r) &= \int_{0}^{2\pi}
+		f_{R, \Theta} \brak{r, \theta} \, d\theta\\
+		f_R(r) &= \int_{0}^{2\pi}
+		\frac{re^\frac{{-r^2}}{2}}{2\pi} \, d\theta\\
+		\implies \boxed{f_R(r)=re^{\frac{-r^2}{2}}}
+\end{align}
+
+		\begin{align}
+		    F_V(r)=F_{X_1^2+X_2^2}(r)\\
+		    \implies F_V(r)=F_{R^2}(r)\\
+		    \implies F_V(r)=\Pr{(R^2\le x)}\\
+		    \implies F_V(r)=\Pr{(R\le \sqrt{x})}\\
+		    \text{But }F_V(x)=\Pr{(R\le x)}\\
+		    \implies F_V(x)=\int _{0}^{x}f_R(r)dr\\
+F_V(x)&=1-e^{\frac{-x^2}{2}}\\
+\implies F_V(r)=\begin{cases}
+0 & r<0\\
+1-e^{\frac{-r}{2}} &r\ge 0\\
+\end{cases}
+		\end{align}
+		\begin{align}
+		    \implies \boxed{\alpha=\frac{1}{2}}
+		\end{align}
+\item Plot the CDF and PDF of 
+\begin{align}
+    A=\sqrt{V}
+\end{align}
+\solution: 
+The CDF and PDF of $A$ is plotted in Fig. \ref{fig:6.1cdf} and \ref{fig:6.1pdf} using the codes below
+\begin{lstlisting}
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/6.3cdf.py
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/6.3pdf.py
+\end{lstlisting}
+Download the above files and execute the following commands to produce Fig.\ref{fig:6.3cdf} and \ref{fig:6.3pdf}
+\begin{lstlisting}
+$ python3 6.3cdf.py
+$ python3 6.3pdf.py
+\end{lstlisting}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\columnwidth]{./figs/6.3cdf.png}
+\caption{The CDF of $V$}
+\label{fig:6.3cdf}
+\end{figure}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\columnwidth]{./figs/6.3pdf.png}
+\caption{The PDF of $V$}
+\label{fig:6.3pdf}
+\end{figure}
+\end{enumerate}
+\section{Conditional Probablity}
+\begin{enumerate}[label=\thesection.\arabic*
+,ref=\thesection.\theenumi]
+\item HELLO WORLDS
+%write whatever for section 7
+\end{enumerate}%This is the end enumeration for the Section 7
 \end{enumerate}
 \end{document}

@@ -7,8 +7,9 @@ void summerofuni(char *str,char *str1);
 void sumofuni(char *tri,int len);
 void equiprobable(char *str,int len);
 int signum(double a);
-void combo(char *str,int len);
+void combo(char *str,char *str2,char *str3,int len);
 void gausquare(char *str,int len);
+double estimator(char *str1,char *str2,int len,int req);
 //end declaration
 
 //uniform func generator
@@ -143,23 +144,22 @@ void equiprobable(char *str,int len)
     }
     fclose(fp);
 }
-void combo(char *str,int len)
+void combo(char *str,char *str2,char *str3,int len)
 {
-int i,j,equi;
-double temp;
-FILE *fp;
-
-fp = fopen(str,"w");
+  //Y=AX+N
+int i,j,equi;//equi refers to numbers in BErnoulli
+double temp;//temp referes to numbers in gaussian
+FILE *fp,*gaufile,*equifile;
+fp = fopen(str,"w");//destiny file
+gaussian(str2,len);//genererate N
+equiprobable(str3,len);//generate X
+gaufile=fopen(str2,"r");
+equifile=fopen(str3,"r");
 //Generate numbers
 for (i = 0; i < len; i++)
 {
-temp = 0;
-equi=signum(2*(double)rand()/(double)RAND_MAX - 1);
-for (j = 0; j < 12; j++)
-{
-temp += (double)rand()/RAND_MAX;
-}
-temp-=6;
+fscanf(equifile,"%d",&equi);
+fscanf(gaufile,"%lf",&temp);
 fprintf(fp,"%lf\n",5*equi+temp);
 }
 fclose(fp);
@@ -186,4 +186,45 @@ fclose(gau2);
 remove("gau1.dat");
 remove("gau2.dat");
 }
+double  estimator(char *str1,char *str2,int len,int req)
+{
+// str1 represents AX+N //combo
+// str2 reprsenst X brnoulii equiprob
+int i;
+long double temp1,temp2,counter1=0,counter2=0,counter=0;
+//counter represents X=1
+combo(str1,"gau.dat","equi.dat",len);
+equiprobable(str2,len);
+FILE *fp1,*fp2;
+fp1=fopen(str1,"r");// AX+N
+fp2=fopen(str2,"r");//Bernoullii
+//calculation of P(e|0)
+for(i=0;i<len;i++)
+{
+  fscanf(fp1,"%Lf",&temp1);
+  fscanf(fp2,"%Lf",&temp2);
+  if(temp2==1)
+  {
+    counter++;
+  }
+  if(temp1<0&&temp2==1)
+  {
+    counter1++;
+  }
+  if(temp1>0&&temp2==-1)
+  {
+    counter2++;
+  }
+}
+fclose(fp1);
+fclose(fp2);
+if(req==1)
+{
+  return (double)counter1/counter;
+}
+else
+{
+  return (double)counter2/(len-counter);
+}
+} 
 
