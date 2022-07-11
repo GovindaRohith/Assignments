@@ -675,7 +675,7 @@ $ python3 5.3.py
 	    \item If $Y>0$ then probably $X=1$
 	\end{enumerate}
 \label{ml-ch4_sim}
-Find 
+\item Find 
 \begin{equation}
 	P_{e|0} = \pr{\hat{X} = -1|X=1}
 \end{equation}
@@ -694,8 +694,8 @@ $ gcc 5.5.c
 $ ./a.out
 \end{lstlisting}
 \begin{align}
-P_{e|0}=0.499035\\
-P_{e|1}=0.500176
+P_{e|0}=0.499033\\
+P_{e|1}=0.500138
 \end{align}
 \item Find $P_e$ assuming that $X$ has equiprobable symbols.\\
 \solution
@@ -706,17 +706,133 @@ Since X is equiprobable
 \begin{align}
     P(X=1)=P(X=-1)=0.5\\
     \implies P_e=\frac{P_{e|0}+P_{e|1}}{2}\\
-    \implies \boxed{P_e=Q_N(A)}
+    \implies \boxed{P_e=0.499585}
 \end{align}
 \item
-Verify by plotting  the theoretical $P_e$ with respect to $A$ from 0 to 10 dB.  
-%
+Verify by plotting  the theoretical $P_e$ with respect to $A$ from 0 to 10 dB.  \\
+\solution:
+\begin{align}
+    P_{e|0}&=\pr{\hat{X}=-1|X=1}\\
+    P_{e|0}&=\pr{AX+N<0|X=1}\\
+    P_{e|0}&=\pr{N<-A}\\
+    P_{e|0}&=\int_{-\infty }^{-A}\frac{e^{\frac{-x^2}{2}}}{\sqrt{2\pi}}\\
+    P_{e|0}&=\int_{A }^{\infty}\frac{e^{\frac{-x^2}{2}}}{\sqrt{2\pi}}\\
+    P_{e|0}&=Q_N(A)\\
+    \text{Similarly, }P_{e|1}&=Q_N(A)
+\end{align}
+\begin{lstlisting}
+wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/5.6.py
+\end{lstlisting}
+Download the above files and execute the following commands to produce Fig.\ref{fig:5.6}
+\begin{lstlisting}
+$ python3 5.6.py
+\end{lstlisting}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\columnwidth]{./figs/5.6.png}
+\caption{$P_e(A)$ with semilog-y axis}
+\label{fig:5.6}
+\end{figure}
 \item Now, consider a threshold $\delta$  while estimating $X$ from $Y$. Find the value of $\delta$ that maximizes the theoretical $P_e$.
+\\
+\solution
+To estimate $X$ from $Y$, we now consider the following:
+\begin{align}
+    X = 
+    \begin{cases}
+        1, & Y > \delta \\
+        -1, & Y < \delta
+    \end{cases}
+\end{align}
+Therefore,
+\begin{align}
+P_{e|0} &= \pr{\hat{X} = -1 | X = 1} \\
+&= \pr{AX+N < \delta | X = 1} \\
+\implies P_{e|0}&= \pr{N < \delta - A} \\
+&= \int _{-\infty} ^{\delta - A} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx \\
+&= \int _{A - \delta} ^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx \\
+\implies P_{e|0}&= Q_N(A - \delta) \\
+\intertext{Similarly,}
+P_{e|1} &= Q_N(A+\delta) \\
+\label{eq:Pe_equation}
+P_e &= P_{e|0} \pr{X = 1} + P_{e|1} \pr{X = -1} \\
+&= \frac{Q_N(A - \delta) + Q_N(A + \delta)}{2} 
+\end{align}
+Differentiating the above equation wrt $\delta$:
+\begin{align}
+0 &= \frac{d}{d\delta} \left(\frac{Q_N(A - \delta) + Q_N(A + \delta)}{2}\right) \\
+&= \frac{1}{2} \left(\frac{1}{\sqrt{2\pi}} e^{-\frac{(\delta - A)^2}{2}} - \frac{1}{\sqrt{2\pi}} e^{-\frac{(A + \delta)^2}{2}} \right) \\
+\intertext{Therefore,}
+(\delta - A)^2 &= (\delta + A)^2 \\
+\implies \boxed{\delta = 0}
+\end{align}
 \item Repeat the above exercise when 
-	\begin{align}
-		p_{X}(0) = p
-	\end{align}
-\item Repeat the above exercise using the MAP criterion.
+    \begin{align}
+        p_{X}(0) = p
+    \end{align}
+\\
+\solution
+Using Eq. \eqref{eq:Pe_equation}, we have:
+\begin{align}
+    P_e &= P_{e|0} p+ P_{e|1} (1-p) \\
+    &= p Q_N(A - \delta) + (1-p)Q_N(A + \delta)
+\intertext{Differentiating as before, we get:}
+0 &= p \frac{1}{\sqrt{2\pi}} e^{-\frac{(\delta - A)^2}{2}} - (1-p)\frac{1}{\sqrt{2\pi}} e^{-\frac{(A + \delta)^2}{2}} 
+\end{align}
+ \begin{align}
+e^{\frac{{(\delta +A)}^2-{((\delta -A))}^2}{2}}=\frac{1-p}{p}\\
+\implies \boxed{\delta=0}
+ \end{align}
+    \item Repeat the above exercise using the MAP criterion.
+\\
+\solution
+Assume that $\pr{X = -1} = p$, and $\pr{X = 1} = (1-p)$.\\
+From Total Probability Theorem,
+we have:
+\begin{align}
+\nonumber p_Y(y) &= p_{Y|X = -1}(y|-1) \pr{X = -1} \\
+&+ p_{Y| X = 1}(y|1) \pr{X = 1} \\
+p_Y(y) &=  p \times p_{(-A + N)}(y) \\
+&+ (1-p) \times p_{(A+N)} (y) 
+\end{align}
+ 
+where $p_Y(y)$ is the pdf of $Y$. Now, $p_{(-A + N)}$ is just the pdf of a shifted
+normal distribution, and therefore:
+\begin{align}
+    p_Y(y) &=  p \frac{e^{-\frac{(y+A)^2}{2}}}{\sqrt{2\pi}} + \left(1-p\right) \frac{e^{-\frac{(y-A)^2}{2}}}{\sqrt{2\pi}}
+\end{align}
+To use the MAP criterion, we must find $p_{X|Y}(x|y)$. To do this, we use the Theorem of Conditional Probability:
+\begin{align}
+    p_{X|Y}(x|y) &= \frac{p_{Y|X}(y|x) \times p_X(x)}{p_Y(y)}
+\end{align}
+When $X=1$, we have:
+\begin{align}
+    p_{X|Y}(1|y) &= \frac{p_{Y|X}(y|1) \times p_X(1)}{p_Y(y)} \\
+    &= \frac{\left(1-p\right) \frac{e^{-\frac{(y-A)^2}{2}}}{\sqrt{2\pi}}}{ p \frac{e^{-\frac{(y+A)^2}{2}}}{\sqrt{2\pi}} + \left(1-p\right) \frac{e^{-\frac{(y-A)^2}{2}}}{\sqrt{2\pi}}} \\
+    &= \frac{\left(1-p\right) e^{2yA}}{p + \left(1-p\right) e^{2yA}}
+\end{align}
+Similarly, when $X = -1$, we get:
+\begin{align}
+    p_{X|Y}(-1|y) &= \frac{p}{p + \left(1-p\right) e^{2yA}} 
+\end{align}
+Therefore, when $ p_{X|Y}(1|y) >  p_{X|Y}(-1|y)$, we have:
+\begin{align}
+    \frac{\left(1-p\right) e^{2yA}}{p + \left(1-p\right) e^{2yA}} &> \frac{p}{p + \left(1-p\right) e^{2yA}} \\
+    e^{2yA} &> \frac{p}{\left(1-p\right)} \\
+    \label{eq:y-condition}
+    y &> \frac{1}{2A} \ln{\frac{p}{\left(1-p\right)}}
+\end{align}
+Therefore, when Eq. \eqref{eq:y-condition}, we can assert that $X = 1$, and $X = -1$ otherwise.
+Now, consider when $p = \frac{1}{2} $.
+We have:
+\begin{align}
+    y &> \frac{1}{2A} \ln{\frac{p}{\left(1-p\right)}} \\
+    &= \frac{1}{2A} \ln{1} \\
+    &= 0
+\end{align}
+Therefore, when $y > 0$, we choose $X = 1$, and we choose $X = -1$ otherwise.
+
+
 		\end{enumerate}
 \section{Guasssian to Other}
 \begin{enumerate}[label=\thesection.\arabic*

@@ -160,7 +160,7 @@ for (i = 0; i < len; i++)
 {
 fscanf(equifile,"%d",&equi);
 fscanf(gaufile,"%lf",&temp);
-fprintf(fp,"%lf\n",5*equi+temp);
+fprintf(fp,"%lf\n",0.5*equi+temp);
 }
 fclose(fp);
 }
@@ -226,5 +226,4 @@ else
 {
   return (double)counter2/(len-counter);
 }
-} 
-
+}

@@ -1,0 +1,9 @@
+# Fdb version 3
+["xdvipdfmx"] 0 "out/main.xdv" "out/main.pdf" "out/main" 0
+  "out/main.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "out/main.pdf"
+["xelatex"] 1657273336 "main.tex" "out/main.xdv" "main" 1657273336
+  (generated)
+  "out/main.log"
+  "out/main.xdv"
