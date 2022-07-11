@@ -762,8 +762,7 @@ Differentiating the above equation wrt $\delta$:
 \begin{align}
 0 &= \frac{d}{d\delta} \left(\frac{Q_N(A - \delta) + Q_N(A + \delta)}{2}\right) \\
 &= \frac{1}{2} \left(\frac{1}{\sqrt{2\pi}} e^{-\frac{(\delta - A)^2}{2}} - \frac{1}{\sqrt{2\pi}} e^{-\frac{(A + \delta)^2}{2}} \right) \\
-\intertext{Therefore,}
-(\delta - A)^2 &= (\delta + A)^2 \\
+\implies(\delta - A)^2 &= (\delta + A)^2 \\
 \implies \boxed{\delta = 0}
 \end{align}
 \item Repeat the above exercise when 
@@ -786,7 +785,11 @@ e^{\frac{{(\delta +A)}^2-{((\delta -A))}^2}{2}}=\frac{1-p}{p}\\
     \item Repeat the above exercise using the MAP criterion.
 \\
 \solution
-Assume that $\pr{X = -1} = p$, and $\pr{X = 1} = (1-p)$.\\
+Assume that 
+\begin{align}
+    \pr{X = -1} &= p\\
+    \pr{X = 1} &= (1-p)
+\end{align}
 From Total Probability Theorem,
 we have:
 \begin{align}
@@ -795,8 +798,7 @@ we have:
 p_Y(y) &=  p \times p_{(-A + N)}(y) \\
 &+ (1-p) \times p_{(A+N)} (y) 
 \end{align}
- 
-where $p_Y(y)$ is the pdf of $Y$. Now, $p_{(-A + N)}$ is just the pdf of a shifted
+Now, $p_{(-A + N)}$ is just the pdf of a shifted
 normal distribution, and therefore:
 \begin{align}
     p_Y(y) &=  p \frac{e^{-\frac{(y+A)^2}{2}}}{\sqrt{2\pi}} + \left(1-p\right) \frac{e^{-\frac{(y-A)^2}{2}}}{\sqrt{2\pi}}
