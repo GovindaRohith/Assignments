@@ -7,7 +7,7 @@ void summerofuni(char *str,char *str1);
 void sumofuni(char *tri,int len);
 void equiprobable(char *str,int len);
 int signum(double a);
-void combo(char *str,char *str2,char *str3,int len);
+void combo(char *str,char *str2,char *str3,int len,double a);
 void gausquare(char *str,int len);
 double estimator(char *str1,char *str2,int len,int req);
 //end declaration
@@ -144,7 +144,7 @@ void equiprobable(char *str,int len)
     }
     fclose(fp);
 }
-void combo(char *str,char *str2,char *str3,int len)
+void combo(char *str,char *str2,char *str3,int len,double a)
 {
   //Y=AX+N
 int i,j,equi;//equi refers to numbers in BErnoulli
@@ -160,7 +160,7 @@ for (i = 0; i < len; i++)
 {
 fscanf(equifile,"%d",&equi);
 fscanf(gaufile,"%lf",&temp);
-fprintf(fp,"%lf\n",0.5*equi+temp);
+fprintf(fp,"%lf\n",a*equi+temp);
 }
 fclose(fp);
 }
@@ -193,7 +193,7 @@ double  estimator(char *str1,char *str2,int len,int req)
 int i;
 long double temp1,temp2,counter1=0,counter2=0,counter=0;
 //counter represents X=1
-combo(str1,"gau.dat","equi.dat",len);
+combo(str1,"gau.dat","equi.dat",len,0.5);
 equiprobable(str2,len);
 FILE *fp1,*fp2;
 fp1=fopen(str1,"r");// AX+N

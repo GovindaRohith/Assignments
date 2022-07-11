@@ -623,10 +623,10 @@ $ python3 4.5pdf.py
 \item Verify your results through a plot \\
 \solution The Results are verfied in the plots
 Fig \ref{fig:4.2} and Fig \ref{fig:4.3}
-\section{Guasssian to Other}
+\section{Maximum Likelihood}
 \begin{enumerate}[label=\thesection.\arabic*
 ,ref=\thesection.\theenumi]
-\item Generate equiprobable $X \in \cbrak{1,-1}$.
+\item Generate equiprobable $X \in \cbrak{1,-1}$.\\
 \solution Download the following files and execute the  C program.
 \begin{lstlisting}
 wget https://github.com/GovindaRohith/Assignments/blob/main/Randomnum/codes/5.1.c
@@ -798,8 +798,6 @@ we have:
 p_Y(y) &=  p \times p_{(-A + N)}(y) \\
 &+ (1-p) \times p_{(A+N)} (y) 
 \end{align}
-Now, $p_{(-A + N)}$ is just the pdf of a shifted
-normal distribution, and therefore:
 \begin{align}
     p_Y(y) &=  p \frac{e^{-\frac{(y+A)^2}{2}}}{\sqrt{2\pi}} + \left(1-p\right) \frac{e^{-\frac{(y-A)^2}{2}}}{\sqrt{2\pi}}
 \end{align}
@@ -822,7 +820,7 @@ Therefore, when $ p_{X|Y}(1|y) >  p_{X|Y}(-1|y)$, we have:
     \frac{\left(1-p\right) e^{2yA}}{p + \left(1-p\right) e^{2yA}} &> \frac{p}{p + \left(1-p\right) e^{2yA}} \\
     e^{2yA} &> \frac{p}{\left(1-p\right)} \\
     \label{eq:y-condition}
-    y &> \frac{1}{2A} \ln{\frac{p}{\left(1-p\right)}}
+    \implies y &> \frac{1}{2A} \ln{\frac{p}{\left(1-p\right)}}
 \end{align}
 Therefore, when Eq. \eqref{eq:y-condition}, we can assert that $X = 1$, and $X = -1$ otherwise.
 Now, consider when $p = \frac{1}{2} $.

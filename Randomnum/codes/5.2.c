@@ -6,7 +6,7 @@ int  main(void) //main function begins
 {
  
 //Uniform random numbers
-combo("combo.dat", "gau.dat","equi.dat",1000000);
+combo("combo.dat", "gau.dat","equi.dat",1000000,0.5);
 return 0;
 }
 

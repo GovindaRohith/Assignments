@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1657274116 "/home/pc/Desktop/Temp/PeRV/Assignments/Randomnum/main.tex" "main.pdf" "main" 1657274116
+["pdflatex"] 1657527564 "/home/pc/Desktop/Temp/PeRV/Assignments/Randomnum/main.tex" "main.pdf" "main" 1657527565
   "/etc/texmf/web2c/texmf.cnf" 1654509431 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/pc/Desktop/Temp/PeRV/Assignments/Randomnum/main.tex" 1657274116 28037 85c07a2d5b38c90af8f6c7a5a4912a67 ""
+  "/home/pc/Desktop/Temp/PeRV/Assignments/Randomnum/main.tex" 1657527561 32183 8c16515ff62708c8e311a119435e5614 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -234,15 +234,16 @@
   "figs/3.1.png" 1656573247 23189 b919d30e846e2fe9cae412a7d5d703b9 ""
   "figs/4.5cdf.png" 1656785074 20026 56d387165615c63e5526b42d1d4a2f0c ""
   "figs/4.5pdf.png" 1656785006 19986 4af357d9e07e730e9739c96024f2a306 ""
-  "figs/5.3.png" 1657261864 27380 9b51674fd61fa851fc2dc74cb8bef9c5 ""
+  "figs/5.3.png" 1657388430 21167 a8ab84925e4f4a04f5e75e9c97eb081a ""
+  "figs/5.6.png" 1657518351 25065 442fb79ddd9204e36980edb8fef52017 ""
   "figs/6.1cdf.png" 1657130273 21165 276490a64a9aab8749a4ee46f3bf0ff3 ""
   "figs/6.1pdf.png" 1657130933 23808 1a7882b4e15b7d37c8262b0061bf9693 ""
   "figs/6.3cdf.png" 1657190082 21510 6e8e5897ad08c7ac1fdf99b94037ae2f ""
   "figs/6.3pdf.png" 1657190232 24420 e226fcd74d14ca6ebca74ab7b69cab13 ""
-  "main.aux" 1657274116 4104 7c2834f358180c074ce0665ecfe3e93a "pdflatex"
-  "main.out" 1657274116 909 6915a71ff61eb8c257871140d16ab5f4 "pdflatex"
-  "main.tex" 1657274116 28037 85c07a2d5b38c90af8f6c7a5a4912a67 ""
-  "main.toc" 1657274116 459 12ceebfbf32697e490f90d7791a1f287 "pdflatex"
+  "main.aux" 1657527565 4505 4d29c6763edcc7b7c66df9f5df2aa35f "pdflatex"
+  "main.out" 1657527565 906 c375c09f2cfa59510e1763f939b75984 "pdflatex"
+  "main.tex" 1657527561 32183 8c16515ff62708c8e311a119435e5614 ""
+  "main.toc" 1657527565 459 12d3d79a62fa9737debbe18813c75100 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
