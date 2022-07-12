@@ -10,6 +10,8 @@ int signum(double a);
 void combo(char *str,char *str2,char *str3,int len,double a);
 void gausquare(char *str,int len);
 double estimator(char *str1,char *str2,int len,int req);
+void cp7(char *reach,char *str,char *str1,char *str2,double gamma,int len);
+void rayl(char *str,double gamma,int len);
 //end declaration
 
 //uniform func generator
@@ -226,4 +228,57 @@ else
 {
   return (double)counter2/(len-counter);
 }
+}
+
+void rayl(char *str,double gamma,int len)
+{
+int i,j;
+double temp1, temp2;
+FILE *fp,*g1,*g2;
+fp = fopen(str,"w");
+//Generate numbers
+gaussian("gau1.dat",len);
+gaussian("gau2.dat",len);
+g1=fopen("gau1.dat","r");
+g1=fopen("gau2.dat","r");
+for (i = 0; i < len; i++)
+{
+fscanf(g1,"%lf",&temp1);
+fscanf(g2,"%lf",&temp2);
+double sig = sqrt(gamma/2.0);
+temp1=sig*temp1;
+temp2=sig*temp2;
+fprintf(fp,"%lf\n",sqrt(temp1*temp1 + temp2*temp2));
+}
+// fclose(fp);
+// fclose(g1);
+// fclose(g2);
+}
+
+void cp7(char *reach,char *str,char *str1,char *str2,double gamma,int len)
+{
+  //str --> for rayl
+  //str1-->for bernoluis
+  //str2-->for gauss
+  rayl(str,gamma,len);
+  equiprobable(str1,len);
+  gausquare(str2,len);
+  int i;
+  double temp1,temp2,temp3;
+  FILE *fp1,*fp2,*fp3,*fp;
+  fp1=fopen(str,"r");
+  fp2=fopen(str1,"r");
+  fp3=fopen(str2,"r");
+  fp=fopen(reach,"w");
+  for(i=0;i<len;i++)
+  {
+    fscanf(fp1,"%lf",&temp1);
+    fscanf(fp2,"%lf",&temp2);
+    fscanf(fp3,"%lf",&temp3);
+    fprintf(fp,"%lf\n",temp1*temp2+temp3);
+  }
+  // fclose(fp1);
+  // fclose(fp2);
+  // fclose(fp3);
+  // fclose(fp);
 }
